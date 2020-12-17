@@ -32,6 +32,7 @@ public class Main {
 					System.out.println("4 - Obter vértice de grau máximo do grafo");
 					System.out.println("5 - Imprimir lista de adjacências");
 					System.out.println("6 - Imprimir matriz de adjacências");
+					System.out.println("7 - Aplicar Busca em Largura (DFS)");
 					System.out.println("0 - Voltar para PRINCIPAL");
 					System.out.format("\nEscolha uma opção: ");
 					menuOrientado = entrada.nextInt();
@@ -70,6 +71,9 @@ public class Main {
 						System.out.println(new String(new char[45]).replace("\0", "-"));
 						System.out.println("\nMatriz de adjacências:");
 						grafoOrientado.printMatrizAdjacencias();
+					case 7:
+						grafoOrientado.dfs();
+						grafoOrientado.visitarVertice(grafoOrientado.getVertice(0).getIndex());
 					default:
 						break;
 					}
@@ -88,6 +92,7 @@ public class Main {
 					System.out.println("4 - Obter vértice de grau máximo do grafo");
 					System.out.println("5 - Imprimir lista de adjacências");
 					System.out.println("6 - Imprimir matriz de adjacências");
+					System.out.println("7 - Aplicar Busca em Largura (DFS)");
 					System.out.println("0 - Voltar para PRINCIPAL");
 					System.out.format("\nEscolha uma opção: ");
 					menuNaoOrientado = entrada.nextInt();
@@ -126,6 +131,9 @@ public class Main {
 						System.out.println(new String(new char[45]).replace("\0", "-"));
 						System.out.println("\nMatriz de adjacências:");
 						grafoNaoOrientado.printMatrizAdjacencias();
+					case 7:
+						grafoNaoOrientado.dfs();
+						grafoNaoOrientado.visitarVertice(grafoNaoOrientado.getVertice(0).getIndex());
 					default:
 						break;
 					}

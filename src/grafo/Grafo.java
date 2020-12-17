@@ -6,11 +6,16 @@ public abstract class Grafo {
 	protected LinkedList<Vertice> vertices;	// lista de vértices
 	protected LinkedList<Aresta> arestas;	// lista de arestas
 	protected MatrizQuadrada matrizAdjacencias; // lista de listas de inteiros
+	private static final int BRANCO = -1;
+	private static final int CINZA = 0;
+	private static final int PRETO = 1;
+	protected LinkedList<Integer> cor;
 	
 	public Grafo() {
 		vertices = new LinkedList<Vertice>();
 		arestas = new LinkedList<Aresta>();
 		matrizAdjacencias = new MatrizQuadrada(0);
+		cor = new LinkedList<Integer>();
 	}
 	
 	public void adicionarVertices(int n) { // o index do novo vértice é definido automaticamente
@@ -62,4 +67,29 @@ public abstract class Grafo {
 		matrizAdjacencias.print();
 	}
 	
+	public void dfs() {
+		for (int i = 0; i < vertices.size(); ++i) {
+			cor.add(BRANCO);
+			
+		}
+		
+		for (int u = 0; u < vertices.size(); ++u) {
+			if (cor.get(u) == BRANCO) {
+				visitarVertice(u);
+			}
+		}
+	}
+	
+	public void visitarVertice(Integer u) {
+		cor.set(u, CINZA);
+		System.out.format("Visitou o vértice %d\n", u+1);
+		LinkedList<Vertice> listaAtual = vertices.get(u).getListaAdjacencias();
+		for (int i = 0; i < listaAtual.size(); ++i) {
+			if (cor.get(listaAtual.get(i).getIndex()-1) == BRANCO) {
+				visitarVertice(listaAtual.get(i).getIndex()-1);
+				
+			}
+		}
+		cor.set(u, PRETO);
+	}
 }
