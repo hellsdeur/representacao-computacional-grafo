@@ -70,7 +70,6 @@ public abstract class Grafo {
 	public void dfs() {
 		for (int i = 0; i < vertices.size(); ++i) {
 			cor.add(BRANCO);
-			
 		}
 		
 		for (int u = 0; u < vertices.size(); ++u) {
